@@ -1,8 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://b20f6a2m233b7"]
+[gd_scene load_steps=5 format=3 uid="uid://b20f6a2m233b7"]
 
 [ext_resource type="PackedScene" uid="uid://b3q84wv6mu7xs" path="res://Scenes/Ball.tscn" id="1_bf2rn"]
+[ext_resource type="PackedScene" uid="uid://c6760ncedyjvs" path="res://Scenes/Border.tscn" id="1_dq3j4"]
+[ext_resource type="PackedScene" uid="uid://b5j5xf220famq" path="res://Scenes/Flipper.tscn" id="2_4jcid"]
+[ext_resource type="PackedScene" uid="uid://d2em4y8sevu8q" path="res://Scenes/Spring.tscn" id="3_mlyqx"]
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Border" parent="." instance=ExtResource("1_dq3j4")]
+position = Vector2(693, 178)
+
+[node name="Spring" parent="." instance=ExtResource("3_mlyqx")]
+position = Vector2(1318, 977)
+
 [node name="Ball" parent="." instance=ExtResource("1_bf2rn")]
-position = Vector2(563, 320)
+position = Vector2(1318, 888)
+
+[node name="Camera2D" type="Camera2D" parent="Ball"]
+rotation = 2.61799
+zoom = Vector2(0.5, 0.5)
+
+[node name="Flipper" parent="." instance=ExtResource("2_4jcid")]
+position = Vector2(443, 464)
+rotation = 0.523599
+MASS = 1.0
+left_flipper = true
+
+[node name="Flipper2" parent="." instance=ExtResource("2_4jcid")]
+position = Vector2(722, -16)
+MASS = 1.0

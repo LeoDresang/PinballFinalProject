@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5j5xf220famq"]
+
+[ext_resource type="Texture2D" uid="uid://b1ihq40u65j3b" path="res://Assets/Flipper.png" id="1_1duck"]
+[ext_resource type="Script" path="res://Scripts/flipper.gd" id="1_7msyh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bkaf"]
+size = Vector2(38, 216)
+
+[node name="Flipper" type="CharacterBody2D"]
+rotation = -3.66519
+script = ExtResource("1_7msyh")
+MASS = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(85, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_1duck")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(85, 0)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2bkaf")

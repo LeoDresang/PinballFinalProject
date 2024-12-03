@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6760ncedyjvs"]
+
+[ext_resource type="Texture2D" uid="uid://dtr4o8xckgl54" path="res://Assets/Border.png" id="1_3mwcy"]
+
+[node name="Border" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3mwcy")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(7, 0)
+scale = Vector2(1.02, 1.01)
+build_mode = 1
+polygon = PackedVector2Array(-333, 440, -333, -115, -300, -250, -249.75, -325, -166.5, -395, -83.25, -430, 0, -441, 83.25, -430, 166.5, -395, 249.75, -325, 300, -250, 333, -115, 333, 440)
