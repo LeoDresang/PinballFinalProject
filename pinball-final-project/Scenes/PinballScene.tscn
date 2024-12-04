@@ -8,24 +8,24 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Border" parent="." instance=ExtResource("1_dq3j4")]
-position = Vector2(693, 178)
-
-[node name="Spring" parent="." instance=ExtResource("3_mlyqx")]
-position = Vector2(1318, 977)
-
-[node name="Ball" parent="." instance=ExtResource("1_bf2rn")]
-position = Vector2(1318, 888)
-
-[node name="Camera2D" type="Camera2D" parent="Ball"]
-rotation = 2.61799
-zoom = Vector2(0.5, 0.5)
 
 [node name="Flipper" parent="." instance=ExtResource("2_4jcid")]
-position = Vector2(443, 464)
+position = Vector2(1483, -76)
 rotation = 0.523599
 MASS = 1.0
 left_flipper = true
 
 [node name="Flipper2" parent="." instance=ExtResource("2_4jcid")]
-position = Vector2(722, -16)
+position = Vector2(1482, 116)
 MASS = 1.0
+
+[node name="Spring" parent="." instance=ExtResource("3_mlyqx")]
+position = Vector2(470, 798)
+SPRING_CONSTANT = 4000.0
+
+[node name="Ball" parent="." instance=ExtResource("1_bf2rn")]
+position = Vector2(470, 709)
+
+[node name="Camera2D" type="Camera2D" parent="Ball"]
+rotation = 2.61799
+zoom = Vector2(0.5, 0.5)
