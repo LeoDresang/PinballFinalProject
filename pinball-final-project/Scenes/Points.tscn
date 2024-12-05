@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://de0nrqp7e7han"]
+
+[ext_resource type="Script" path="res://Scripts/points.gd" id="1_5ruiu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_64ybr"]
+font_size = 250
+
+[node name="Points" type="Label"]
+label_settings = SubResource("LabelSettings_64ybr")
+script = ExtResource("1_5ruiu")

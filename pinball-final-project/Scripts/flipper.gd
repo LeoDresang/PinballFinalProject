@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var FLIPPER_CD:float = 0.8
+@export var FLIPPER_CD:float = 0.3
 @export var SWING_TIME:float = 0.1
 @export var MASS:float = 1
 

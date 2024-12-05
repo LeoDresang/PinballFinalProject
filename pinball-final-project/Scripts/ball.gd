@@ -5,10 +5,6 @@ extends CharacterBody2D
 
 @onready var collider:CollisionShape2D = $CollisionShape2D
 
-func _ready()-> void:
-	await get_tree().get_root().ready
-	Globals.ball = self
-
 func _process(delta: float) -> void:
 	if(Globals.ball != self):
 		Globals.ball = self

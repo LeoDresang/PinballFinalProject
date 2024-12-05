@@ -19,8 +19,10 @@ func _process(delta: float) -> void:
 	if(!spring_used):
 		if(Input.is_action_just_released("Charge_Spring")):
 			spring_used = true
-			var force = Vector2(-300,-SPRING_CONSTANT * (RELAXED_LENGTH - scale.y))
+			var force = Vector2(-150,-SPRING_CONSTANT * (RELAXED_LENGTH - scale.y))
 			Globals.apply_ball_force(force)
+			visible = false
+			collider.set_deferred("disabled", true)
 		
 		if(Input.is_action_pressed("Charge_Spring")):
 			if(scale.y > 0.5):
