@@ -11,9 +11,7 @@ func _on_left_area_body_entered(body: Node2D) -> void:
 	if(body == Globals.ball):
 		var normal = Vector2.ZERO
 		
-		normal += Vector2(1,0)
-		print("left wall bounce")
-			
+		normal += Vector2(1,0)			
 		normal = normal.normalized()
 		
 		var force = RESTITUTION * normal * Globals.ball.velocity.dot(normal)
@@ -24,9 +22,7 @@ func _on_right_area_body_entered(body: Node2D) -> void:
 	if(body == Globals.ball):
 		var normal = Vector2.ZERO
 		
-		normal += Vector2(-1,0)
-		print("right wall bounce")
-			
+		normal += Vector2(-1,0)			
 		normal = normal.normalized()
 		
 		var force = RESTITUTION * normal * Globals.ball.velocity.dot(normal)
@@ -43,7 +39,6 @@ func _on_top_area_body_entered(body: Node2D) -> void:
 		var normal = Vector2.ZERO
 		
 		normal += Vector2(0,1)
-		print("top wall bounce")
 			
 		normal = normal.normalized()
 		

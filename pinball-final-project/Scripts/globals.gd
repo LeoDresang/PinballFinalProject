@@ -4,6 +4,7 @@ const SHAKE_FADE:float = 3.5
 
 var camera:Camera2D = null
 var ball:CharacterBody2D = null
+var ball_radius:float = 0
 var points_label:Label = null
 var points:int = 0
 

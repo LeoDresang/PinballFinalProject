@@ -8,8 +8,9 @@ extends CharacterBody2D
 func _process(delta: float) -> void:
 	if(Globals.ball != self):
 		Globals.ball = self
-
-
+	if(Globals.ball_radius != collider.shape.radius):
+		Globals.ball_radius = collider.shape.radius
+		
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += GRAVITY * MASS * delta

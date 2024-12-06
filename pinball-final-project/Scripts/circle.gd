@@ -10,7 +10,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var normal = Vector2.ZERO
 		
 		normal = (Globals.ball.global_position - global_position).normalized()
-		print("circle bounce")
 		var force = 1.1 * RESTITUTION * normal * Globals.ball.velocity.dot(normal)
 		Globals.apply_ball_force(force)
 		Globals.add_points(10)
