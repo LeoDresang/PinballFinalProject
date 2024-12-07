@@ -6,6 +6,9 @@ const COMPRESSION_AMOUNT:float = 0.5
 
 var RELAXED_LENGTH:float
 
+var x_random:float = 0
+var rng = RandomNumberGenerator.new()
+
 @onready var sprite = $Sprite2D
 @onready var collider = $CollisionShape2D
 
@@ -19,7 +22,10 @@ func _process(delta: float) -> void:
 	if(!spring_used):
 		if(Input.is_action_just_released("Charge_Spring")):
 			spring_used = true
-			var force = Vector2(-150,-SPRING_CONSTANT * (RELAXED_LENGTH - scale.y))
+			x_random = rng.randf_range(100.0, 300.0)
+			if randi_range(0,1) == 1:
+				x_random = -x_random
+			var force = Vector2(x_random, -SPRING_CONSTANT * (RELAXED_LENGTH - scale.y))
 			Globals.apply_ball_force(force)
 			visible = false
 			collider.set_deferred("disabled", true)

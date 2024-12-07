@@ -25,10 +25,11 @@ position = Vector2(0, 799)
 SPRING_CONSTANT = 4000.0
 
 [node name="Ball" parent="." instance=ExtResource("1_bf2rn")]
-position = Vector2(0, 713)
+position = Vector2(205, 569)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
+position = Vector2(253, 604)
+zoom = Vector2(2, 2)
 script = ExtResource("5_x5a6i")
 
 [node name="Points" parent="Camera2D" instance=ExtResource("5_gfg4j")]

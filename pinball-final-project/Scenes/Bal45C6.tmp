@@ -9,6 +9,8 @@ radius = 43.5
 [node name="Ball" type="CharacterBody2D"]
 up_direction = Vector2(0, 1)
 script = ExtResource("1_muyic")
+GRAVITY = null
+MASS = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)

@@ -25,7 +25,9 @@ position = Vector2(0, 799)
 SPRING_CONSTANT = 4000.0
 
 [node name="Ball" parent="." instance=ExtResource("1_bf2rn")]
-position = Vector2(0, 713)
+position = Vector2(0, 463)
+GRAVITY = 9.81
+MASS = 100.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)

@@ -11,6 +11,7 @@ size = Vector2(740, 101)
 
 [node name="Border" type="CharacterBody2D"]
 scale = Vector2(2, 2)
+up_direction = Vector2(0, 1)
 script = ExtResource("1_jmg5j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
