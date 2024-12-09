@@ -17,6 +17,8 @@ var center_of_mass:Vector2 = Vector2.ZERO
 
 var collision_dot := preload("uid://mp6lcskmi5mw")
 
+var omega:float = 0
+
 func ready()->void:
 	if(left_flipper):
 		rotation_degrees = 30
@@ -24,13 +26,19 @@ func ready()->void:
 		rotation_degrees = -210
 	
 func _process(delta:float)->void:
+	if(Globals.flipper_mass != MASS):
+		Globals.flipper_mass = MASS
+	
+	
 	if(!flipper_on_cd):
 		if (left_flipper):
 			if(Input.is_action_just_pressed("Left_Flipper")):
 				start_flipper_cd(true)
+				omega = 6.98
 		else:
 			if(Input.is_action_just_pressed("Right_Flipper")):
 				start_flipper_cd(false)
+				omega = 6.98
 
 func start_flipper_cd(left:bool)->void:
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR)
@@ -42,12 +50,14 @@ func start_flipper_cd(left:bool)->void:
 	await get_tree().create_timer(SWING_TIME).timeout
 	sprite.modulate = Color(0.939, 0, 0.09, 1)
 	tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR)
+	omega = -6.98 / 3
 	if(left):
 		tween.tween_property(self, "rotation_degrees", 30, FLIPPER_CD)
 	else:
 		tween.tween_property(self, "rotation_degrees", -210, FLIPPER_CD)
 	await get_tree().create_timer(FLIPPER_CD).timeout
 	flipper_on_cd = false
+	omega = 0
 	sprite.modulate = Color(1, 1, 1, 1)
 
 

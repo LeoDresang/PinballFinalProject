@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 			red_dot1.set_property(C_position)
 			get_tree().current_scene.add_child(red_dot1)
 			
-			var force = Vector2.ZERO
-			var normal = (global_position - C_position).normalized()
-			Globals.apply_ball_force(RESTITUTION * normal * previous_velocity.dot(normal))
+			var force = (Vector3(0,0, get_slide_collision(0).get_collider().omega).cross(Vector3(C_position.x, C_position.y, 0) - Vector3(get_slide_collision(0).get_collider().global_position.x, get_slide_collision(0).get_collider().global_position.y, 0)))
+			Globals.apply_ball_force(Vector2(force.x, force.y))
+			#Globals.apply_ball_force(RESTITUTION * normal * previous_velocity.dot(normal))
 			Globals.camera.apply_shake(SHAKE_STRENGTH * Globals.ball.velocity.length(), Globals.SHAKE_FADE)

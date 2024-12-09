@@ -7,6 +7,7 @@ var ball:CharacterBody2D = null
 var ball_radius:float = 0
 var points_label:Label = null
 var points:int = 0
+var flipper_mass:float = 0
 
 
 func apply_ball_force(force:Vector2):
