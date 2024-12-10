@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b20f6a2m233b7"]
+[gd_scene load_steps=14 format=3 uid="uid://b20f6a2m233b7"]
 
 [ext_resource type="PackedScene" uid="uid://b3q84wv6mu7xs" path="res://Scenes/Ball.tscn" id="1_bf2rn"]
 [ext_resource type="PackedScene" uid="uid://c6760ncedyjvs" path="res://Scenes/Border.tscn" id="1_dq3j4"]
@@ -8,14 +8,22 @@
 [ext_resource type="PackedScene" uid="uid://de0nrqp7e7han" path="res://Scenes/Points.tscn" id="5_gfg4j"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="5_x5a6i"]
 [ext_resource type="Script" path="res://Scripts/game_area.gd" id="8_3tr5k"]
+[ext_resource type="Texture2D" uid="uid://b8bmj6tlm42so" path="res://Assets/Border.png" id="8_cr3eh"]
+[ext_resource type="Texture2D" uid="uid://chm42y45b6pv8" path="res://Assets/pinballSprites.png" id="9_akfr5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfpum"]
 size = Vector2(4000, 4000)
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_845du"]
+texture = ExtResource("9_akfr5")
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
 
-[node name="Border" parent="." instance=ExtResource("1_dq3j4")]
-scale = Vector2(4.2, 2)
+[sub_resource type="TileSet" id="TileSet_5oeaq"]
+sources/0 = SubResource("TileSetAtlasSource_845du")
+
+[node name="Node2D" type="Node2D"]
 
 [node name="Flipper" parent="." instance=ExtResource("2_4jcid")]
 position = Vector2(-450, 500)
@@ -32,24 +40,10 @@ left_flipper = true
 
 [node name="Flipper4" parent="." instance=ExtResource("2_4jcid")]
 position = Vector2(870, 0)
-scale = Vector2(1, 1)
 
 [node name="Spring" parent="." instance=ExtResource("3_mlyqx")]
 position = Vector2(0, 799)
 SPRING_CONSTANT = 4000.0
-
-[node name="Ball" parent="." instance=ExtResource("1_bf2rn")]
-position = Vector2(0, 713)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
-script = ExtResource("5_x5a6i")
-
-[node name="Points" parent="Camera2D" instance=ExtResource("5_gfg4j")]
-offset_left = -1919.0
-offset_top = -1079.0
-offset_right = 329.0
-offset_bottom = 283.0
 
 [node name="Circles" type="Node" parent="."]
 
@@ -60,6 +54,7 @@ scale = Vector2(0.7, 0.7)
 [node name="Circle3" parent="Circles" instance=ExtResource("5_bbik3")]
 position = Vector2(0, -550)
 scale = Vector2(2, 2)
+big_circle = true
 
 [node name="Circle" parent="Circles" instance=ExtResource("5_bbik3")]
 position = Vector2(-250, -200)
@@ -71,10 +66,12 @@ position = Vector2(845, -600)
 [node name="Circle5" parent="Circles" instance=ExtResource("5_bbik3")]
 position = Vector2(-860, 600)
 scale = Vector2(2, 2)
+big_circle = true
 
 [node name="Circle6" parent="Circles" instance=ExtResource("5_bbik3")]
 position = Vector2(850, 600)
 scale = Vector2(2, 2)
+big_circle = true
 
 [node name="Circle7" parent="Circles" instance=ExtResource("5_bbik3")]
 position = Vector2(0, 100)
@@ -87,7 +84,49 @@ position = Vector2(-845, -600)
 script = ExtResource("8_3tr5k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game Area"]
-visible = false
 shape = SubResource("RectangleShape2D_hfpum")
+
+[node name="Ball" parent="." instance=ExtResource("1_bf2rn")]
+position = Vector2(0, 713)
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+tile_set = SubResource("TileSet_5oeaq")
+format = 2
+layer_0/tile_data = PackedInt32Array(786418, 131072, 6, 786419, 131072, 6, 786420, 131072, 6, 786421, 131072, 6, 786422, 131072, 6, 786423, 131072, 6, 786424, 131072, 6, 786425, 131072, 6, 786426, 131072, 6, 786427, 131072, 6, 786428, 131072, 6, 786429, 131072, 6, 786430, 131072, 6, 786431, 131072, 6, 720896, 131072, 6, 720897, 131072, 6, 720898, 131072, 6, 720899, 131072, 6, 720900, 131072, 6, 720901, 131072, 6, 720902, 131072, 6, 720903, 131072, 6, 720904, 131072, 6, 720905, 131072, 6, 720906, 131072, 6, 720907, 131072, 6, 720908, 131072, 6, 720909, 131072, 6, 786417, 65536, 6, 720910, 65536, 268435462, -786418, 65536, 805306374, -720911, 65536, 536870918, -720910, 131072, 536870918, -720909, 131072, 536870918, -720908, 131072, 536870918, -720907, 131072, 536870918, -720906, 131072, 536870918, -720905, 131072, 536870918, -720904, 131072, 536870918, -720903, 131072, 536870918, -720902, 131072, 536870918, -720901, 131072, 536870918, -720900, 131072, 536870918, -720899, 131072, 536870918, -720898, 131072, 536870918, -720897, 131072, 536870918, -786432, 131072, 536870918, -786431, 131072, 536870918, -786430, 131072, 536870918, -786429, 131072, 536870918, -786428, 131072, 536870918, -786427, 131072, 536870918, -786426, 131072, 536870918, -786425, 131072, 536870918, -786424, 131072, 536870918, -786423, 131072, 536870918, -786422, 131072, 536870918, -786421, 131072, 536870918, -786420, 131072, 536870918, -786419, 131072, 536870918, 655374, 131072, 1610612742, 589838, 131072, 1610612742, 524302, 131072, 1610612742, 458766, 131072, 1610612742, 393230, 131072, 1610612742, 327694, 131072, 1610612742, 262158, 131072, 1610612742, 196622, 131072, 1610612742, 131086, 131072, 1610612742, 65550, 131072, 1610612742, 14, 131072, 1610612742, -65522, 131072, 1610612742, -131058, 131072, 1610612742, -196594, 131072, 1610612742, -262130, 131072, 1610612742, -327666, 131072, 1610612742, -393202, 131072, 1610612742, -458738, 131072, 1610612742, -524274, 131072, 1610612742, -589810, 131072, 1610612742, -655346, 131072, 1610612742, -720882, 131072, 1610612742, 720881, 131072, 1342177286, 655345, 131072, 1342177286, 589809, 131072, 1342177286, 524273, 131072, 1342177286, 458737, 131072, 1342177286, 393201, 131072, 1342177286, 327665, 131072, 1342177286, 262129, 131072, 1342177286, 196593, 131072, 1342177286, 131057, 131072, 1342177286, 65521, 131072, 1342177286, -15, 131072, 1342177286, -65551, 131072, 1342177286, -131087, 131072, 1342177286, -196623, 131072, 1342177286, -262159, 131072, 1342177286, -327695, 131072, 1342177286, -393231, 131072, 1342177286, -458767, 131072, 1342177286, -524303, 131072, 1342177286, -589839, 131072, 1342177286, -655375, 131072, 1342177286)
+
+[node name="Border" parent="." instance=ExtResource("1_dq3j4")]
+scale = Vector2(4.2, 2)
+
+[node name="Border2" type="Sprite2D" parent="."]
+position = Vector2(-5938, -1615)
+scale = Vector2(12.2231, 5.77593)
+texture = ExtResource("8_cr3eh")
+
+[node name="Border2" type="Sprite2D" parent="Border2"]
+position = Vector2(529.405, -4319.65)
+scale = Vector2(1.14877, 8.1863)
+texture = ExtResource("8_cr3eh")
+
+[node name="Border2" type="Sprite2D" parent="Border2/Border2"]
+position = Vector2(-44.1545, 1131.88)
+scale = Vector2(1.14877, 1.01504)
+texture = ExtResource("8_cr3eh")
+
+[node name="Border3" type="Sprite2D" parent="."]
+position = Vector2(5456, -1334)
+scale = Vector2(11.088, 6)
+texture = ExtResource("8_cr3eh")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("5_x5a6i")
+
+[node name="Points" parent="Camera2D" instance=ExtResource("5_gfg4j")]
+offset_left = -1919.0
+offset_top = -1079.0
+offset_right = 329.0
+offset_bottom = 283.0
 
 [connection signal="body_exited" from="Game Area" to="Game Area" method="_on_body_exited"]

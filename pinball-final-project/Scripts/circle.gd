@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var big_circle:bool = false
+
 @onready var audio1 = $AudioStreamPlayer
 @onready var audio2 = $AudioStreamPlayer2
 @onready var audio3 = $AudioStreamPlayer3
@@ -10,6 +12,12 @@ const RESTITUTION:float = -1.9
 const SHAKE_STRENGTH = 0.025
 
 @onready var area:Area2D = $Area2D
+
+func _ready():
+	if(big_circle):
+		$Sprite1.visible = false
+		$Sprite2.visible = true
+
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if(body == Globals.ball):

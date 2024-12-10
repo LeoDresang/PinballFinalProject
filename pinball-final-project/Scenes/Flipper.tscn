@@ -1,7 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5j5xf220famq"]
+[gd_scene load_steps=6 format=3 uid="uid://b5j5xf220famq"]
 
-[ext_resource type="Texture2D" uid="uid://b1ihq40u65j3b" path="res://Assets/Flipper.png" id="1_1duck"]
 [ext_resource type="Script" path="res://Scripts/flipper.gd" id="1_7msyh"]
+[ext_resource type="Texture2D" uid="uid://chm42y45b6pv8" path="res://Assets/pinballSprites.png" id="2_f0brk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xi08y"]
+atlas = ExtResource("2_f0brk")
+region = Rect2(32, 63, 96, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wgljo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xi08y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bkaf"]
 size = Vector2(38, 432)
@@ -11,10 +26,11 @@ rotation = -3.66519
 up_direction = Vector2(0, 1)
 script = ExtResource("1_7msyh")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(192.635, -0.246303)
-scale = Vector2(0.4, 0.2)
-texture = ExtResource("1_1duck")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(192.736, -2.3)
+scale = Vector2(4.5, 4.2)
+sprite_frames = SubResource("SpriteFrames_wgljo")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0.00891256, -0.1076)
