@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const RESTITUTION: float = -1.9
+const RESTITUTION: float = -1.3
 
 @onready var left:Area2D = $LeftArea
 @onready var right:Area2D = $LeftArea

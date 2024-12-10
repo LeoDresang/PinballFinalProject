@@ -16,12 +16,11 @@ func _process(delta: float) -> void:
 		position.x = randomOffset()
 		position.y = randomOffset()
 	else:
-		pass
-		#position.x = 0
-		#position.y = 0
+		position.x = 0
+		position.y = 0
 
 func apply_shake(strength: float, fade:float):
-	shake_strength = strength
+	shake_strength = strength / 4
 	shake_fade = fade
 
 func randomOffset() -> float:

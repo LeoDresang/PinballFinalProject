@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b20f6a2m233b7"]
+[gd_scene load_steps=10 format=3 uid="uid://b20f6a2m233b7"]
 
 [ext_resource type="PackedScene" uid="uid://b3q84wv6mu7xs" path="res://Scenes/Ball.tscn" id="1_bf2rn"]
 [ext_resource type="PackedScene" uid="uid://c6760ncedyjvs" path="res://Scenes/Border.tscn" id="1_dq3j4"]
@@ -7,10 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://qrr2x1bkcw3q" path="res://Scenes/Circle.tscn" id="5_bbik3"]
 [ext_resource type="PackedScene" uid="uid://de0nrqp7e7han" path="res://Scenes/Points.tscn" id="5_gfg4j"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="5_x5a6i"]
+[ext_resource type="Script" path="res://Scripts/game_area.gd" id="8_3tr5k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfpum"]
+size = Vector2(4000, 4000)
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Border" parent="." instance=ExtResource("1_dq3j4")]
+scale = Vector2(4.2, 2)
 
 [node name="Flipper" parent="." instance=ExtResource("2_4jcid")]
 position = Vector2(-450, 500)
@@ -19,6 +24,15 @@ left_flipper = true
 
 [node name="Flipper2" parent="." instance=ExtResource("2_4jcid")]
 position = Vector2(450, 500)
+
+[node name="Flipper3" parent="." instance=ExtResource("2_4jcid")]
+position = Vector2(-870, 0)
+rotation = 0.523599
+left_flipper = true
+
+[node name="Flipper4" parent="." instance=ExtResource("2_4jcid")]
+position = Vector2(870, 0)
+scale = Vector2(1, 1)
 
 [node name="Spring" parent="." instance=ExtResource("3_mlyqx")]
 position = Vector2(0, 799)
@@ -39,11 +53,41 @@ offset_bottom = 283.0
 
 [node name="Circles" type="Node" parent="."]
 
-[node name="Circle" parent="Circles" instance=ExtResource("5_bbik3")]
-position = Vector2(-325, 0)
-
 [node name="Circle2" parent="Circles" instance=ExtResource("5_bbik3")]
-position = Vector2(325, 0)
+position = Vector2(250, -200)
+scale = Vector2(0.7, 0.7)
 
 [node name="Circle3" parent="Circles" instance=ExtResource("5_bbik3")]
-position = Vector2(0, -625)
+position = Vector2(0, -550)
+scale = Vector2(2, 2)
+
+[node name="Circle" parent="Circles" instance=ExtResource("5_bbik3")]
+position = Vector2(-250, -200)
+scale = Vector2(0.7, 0.7)
+
+[node name="Circle4" parent="Circles" instance=ExtResource("5_bbik3")]
+position = Vector2(845, -600)
+
+[node name="Circle5" parent="Circles" instance=ExtResource("5_bbik3")]
+position = Vector2(-860, 600)
+scale = Vector2(2, 2)
+
+[node name="Circle6" parent="Circles" instance=ExtResource("5_bbik3")]
+position = Vector2(850, 600)
+scale = Vector2(2, 2)
+
+[node name="Circle7" parent="Circles" instance=ExtResource("5_bbik3")]
+position = Vector2(0, 100)
+scale = Vector2(0.7, 0.7)
+
+[node name="Circle8" parent="Circles" instance=ExtResource("5_bbik3")]
+position = Vector2(-845, -600)
+
+[node name="Game Area" type="Area2D" parent="."]
+script = ExtResource("8_3tr5k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game Area"]
+visible = false
+shape = SubResource("RectangleShape2D_hfpum")
+
+[connection signal="body_exited" from="Game Area" to="Game Area" method="_on_body_exited"]

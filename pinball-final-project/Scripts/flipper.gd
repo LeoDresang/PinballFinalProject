@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var FLIPPER_CD:float = 0.3
-@export var SWING_TIME:float = 0.1
+@export var FLIPPER_CD:float = 0.6
+@export var SWING_TIME:float = 0.2
 @export var MASS:float = 1
 
 const RESTITUTION:float = -1.9
@@ -34,11 +34,11 @@ func _process(delta:float)->void:
 		if (left_flipper):
 			if(Input.is_action_just_pressed("Left_Flipper")):
 				start_flipper_cd(true)
-				omega = 6.98
+				omega = 6.98 / 2
 		else:
 			if(Input.is_action_just_pressed("Right_Flipper")):
 				start_flipper_cd(false)
-				omega = 6.98
+				omega = 6.98 / 2
 
 func start_flipper_cd(left:bool)->void:
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR)
@@ -50,7 +50,7 @@ func start_flipper_cd(left:bool)->void:
 	await get_tree().create_timer(SWING_TIME).timeout
 	sprite.modulate = Color(0.939, 0, 0.09, 1)
 	tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR)
-	omega = -6.98 / 3
+	omega = -6.98 / 6
 	if(left):
 		tween.tween_property(self, "rotation_degrees", 30, FLIPPER_CD)
 	else:
