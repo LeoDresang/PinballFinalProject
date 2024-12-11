@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	if(!spring_used):
 		if(Input.is_action_just_released("Charge_Spring")):
 			spring_used = true
-			x_random = rng.randf_range(100.0, 300.0)
+			x_random = rng.randf_range(400.0, 1200.0)
 			if randi_range(0,1) == 1:
 				x_random = -x_random
 			var force = Vector2(x_random, -SPRING_CONSTANT * (RELAXED_LENGTH - scale.y))

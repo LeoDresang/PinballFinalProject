@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 @export var GRAVITY:float = 9.81
-@export var MASS:float = 100
+@export var MASS:float = 800
 
-const RESTITUTION:float = 0
+const RESTITUTION:float = -1
 const SHAKE_STRENGTH = 0.025
 
 @onready var collider:CollisionShape2D = $CollisionShape2D
@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 			var v =  Vector3(previous_velocity.x, previous_velocity.y, 0) - (Vector3(0,0, get_slide_collision(0).get_collider().omega).cross(Vector3(C_position.x, C_position.y, 0) - Vector3(get_slide_collision(0).get_collider().global_position.x, get_slide_collision(0).get_collider().global_position.y, 0)))
 			var vi = Vector2(v.x, v.y)
 			var normal = (Globals.ball.global_position - C_position).normalized()
-			var J = -(1 + RESTITUTION) * MASS  * (vi.dot(normal)) * normal
+			var J = RESTITUTION * MASS * (vi.dot(normal)) * normal
 			var force = J / MASS
 			
 			get_slide_collision(0).get_collider().set_collision_layer_value(1, false)
